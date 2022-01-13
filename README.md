@@ -1,99 +1,28 @@
-欢迎来到Lean的Openwrt源码仓库！
-=
-
-[English](./README_EN.md)
-
-如何编译自己需要的 OpenWrt 固件
--
-注意：
--
-1. **不**要用 **root** 用户进行编译！！！
-2. 国内用户编译前最好准备好梯子
-3. 默认登陆IP 192.168.1.1 密码 password
-
-
-编译命令如下:
--
-1. 首先装好 Ubuntu 64bit，推荐 Ubuntu 20.04 LTS x64
-
-2. 命令行输入 `sudo apt-get update` ，然后输入
-   `
-   sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync
-   `
-
-3. 使用 `git clone https://github.com/coolsnowwolf/lede` 命令下载好源代码，然后 `cd lede` 进入目录
-
-4. ```bash
-   ./scripts/feeds update -a
-   ./scripts/feeds install -a
-   make menuconfig
-   ```
-
-5. `make -j8 download V=s` 下载dl库（国内请尽量全局科学上网）
-
-6. 输入 `make -j1 V=s` （-j1 后面是线程数。第一次编译推荐用单线程）即可开始编译你要的固件了。
-
-本套代码保证肯定可以编译成功。里面包括了 R21 所有源代码，包括 IPK 的。
-
-你可以自由使用，但源码编译二次发布请注明我的 GitHub 仓库链接。谢谢合作！
-=
-
-二次编译：
-```bash
-cd lede
-git pull
-./scripts/feeds update -a && ./scripts/feeds install -a
-make defconfig
-make -j8 download
-make -j$(($(nproc) + 1)) V=s
-```
-
-如果需要重新配置：
-```bash
-rm -rf ./tmp && rm -rf .config
-make menuconfig
-make -j$(($(nproc) + 1)) V=s
-```
-
-编译完成后输出路径：bin/targets
-
-如果你使用WSL或WSL2进行编译：
-------
-由于wsl的PATH路径中包含带有空格的Windows路径，有可能会导致编译失败，请在将make -j1 V=s或make -j$(($(nproc) + 1)) V=s改为
-
-首次编译：
-```bash
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin make -j1 V=s 
-```
-二次编译：
-```bash
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin make -j$(($(nproc) + 1)) V=s
-```
-
-特别提示：
-------
-1. 源代码中绝不含任何后门和可以监控或者劫持你的 HTTPS 的闭源软件， SSL 安全是互联网最后的壁垒。安全干净才是固件应该做到的；
-
-2. 如有技术问题需要讨论，欢迎加入 QQ 讨论群： OP 共享技术交流群 ,号码 297253733 ，加群链接: 点击链接加入群聊【 OP 共享技术交流群】：[点击加入](https://jq.qq.com/?_wv=1027&k=5yCRuXL "OP共享技术交流群")
-
-3. 想学习 OpenWrt 开发，但是摸不着门道？自学没毅力？基础太差？怕太难学不会？跟着佐大学 OpenWrt 开发入门培训班助你能学有所成
-报名地址：[点击报名](http://forgotfun.org/2018/04/openwrt-training-2018.html "报名")
-
-## 软路由介绍
-友情推荐不恰饭：如果你在寻找一个低功耗小体积性能不错的 x86 / x64 路由器，我个人建议可以考虑 
-小马v1 的铝合金版本 ( N3710 4千兆)：[页面介绍](https://item.taobao.com/item.htm?spm=a230r.1.14.20.144c763fRkK0VZ&id=561126544764 " 小马v1 的铝合金版本")
-
-![xm1](doc/xm5.jpg)
-![xm2](doc/xm6.jpg)
-
-## 捐贈
-
-如果你觉得此项目对你有帮助，可以捐助我们，以鼓励项目能持续发展，更加完善
-
-### 支付宝
-
-![alipay](doc/alipay_donate.jpg)
-
-### 微信
-
-![wechat](doc/wechat_donate.jpg)
+# IFVWRT
+基于[Lean的源码](https://github.com/coolsnowwolf/lede)修改，默认的配置文件适用于Friendly Elec. NanoPi R4S，可自行更换平台  
+[软件包介绍](README_IPK.md)  
+[编译教程](README_COMPILE.md)  
+[FAQ](README_FAQ.md)
+## 特性
+* 默认自带极少的插件,但附带了常用工具,做到干净整洁但不简陋  
+* 仓库扩充,添加了Hello World,PassWall,Bypass,SSR+等科学上网插件,反对封闭人人有责  
+* 更换shell为bash,使用5.10内核  
+* 使用Nginx作为前端  
+## 镜像
+Releases内为镜像。首先选择镜像类型  
+Squashfs适用于NOR-Flash(常见于路由器等嵌入式设备),Ext4则适用于Nand-Flash(U盘,SD卡等均在此列)  
+详细区别请看[这里](https://forum.openwrt.org/t/ext4-vs-squashfs/25187),NanoPi选Ext4就可以了  
+下载镜像后使用Gzip解压,然后使用烧录工具刷入即可  
+### Linux用户终端刷入指南  
+首先打开终端(如果你不知道这是什么,请使用图形化的工具),使用`cd`移动到镜像目录下  
+然后使用`gzip -dk 你下载的镜像.img.gz`解压镜像(若报错`gzip: command not found`,使用`sudo apt install gzip`或`sudo yum install gzip`)
+插入要烧录的设备,在终端输入`sudo fdisk -l`找到要烧录设备的位置,一般名字为sdX啥的,路径为/dev/sdX  
+然后输入`sudo dd if=你的镜像.img of=要烧录设备的位置 bs=5M status=progress`  
+注意⚠️! 被烧录设备的数据会全部删除!务必做好备份!必须确认路径是你要烧录的设备!!!  
+嗯?你问我为啥这么咬牙切齿?因为我只是想提醒你不要像我这个⑨一样失手把数据盘烧了......  
+等待完成后弹出设备,大功告成!  
+## 使用说明  
+默认登录地址为192.168.2.1(作为从路由可能有变,具体看主路由分配的IP地址)或<http://ifvwrt>  
+浏览器可能会报错提示证书不可信,这是由于Nginx默认开启SSL,使用了自签证书,无视即可  
+默认用户名为root,密码为password,一定要在联网前修改!  
+Waiting for update...
