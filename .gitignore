@@ -32,4 +32,4 @@ git-src
 .ccache
 .vscode*
 
-/.ifv-r4s.config.old
+/ifv-r4s.config.old
