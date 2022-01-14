@@ -15,7 +15,7 @@
 ./scripts/feeds install -a
 make defconfig
 ```
-更新一遍feeds，并检查编译依赖
+更新一遍feeds，并检查编译依赖  
 ## 编译报错排障指南
 这方面我绝对有发言权，因为我把能踩的坑几乎都踩了一遍......  
 Waiting for update...
