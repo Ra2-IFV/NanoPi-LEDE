@@ -1,4 +1,6 @@
 # IFVWRT
+# 特别通知！！
+## 由于本人的云服务器没注意时间，到期了，导致在上面的本地commit全部丢失了！需要一段时间重新编译！
 基于[Lean的源码](https://github.com/coolsnowwolf/lede)修改，默认的配置文件适用于Friendly Elec. NanoPi R4S，可自行更换平台  
 [软件包介绍](README_IPK.md)  
 [编译教程](README_COMPILE.md)  
