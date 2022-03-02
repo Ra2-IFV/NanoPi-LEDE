@@ -7,7 +7,7 @@ BOARDNAME:=Rockchip
 FEATURES:=ext4 audio usb usbgadget display gpio fpu pci pcie rootfs-part boot-part squashfs
 SUBTARGETS:=armv8
 
-KERNEL_PATCHVER=5.4
+KERNEL_PATCHVER=5.10
 KERNEL_TESTING_PATCHVER=5.15
 
 define Target/Description
@@ -17,8 +17,8 @@ endef
 include $(INCLUDE_DIR)/target.mk
 
 DEFAULT_PACKAGES += uboot-envtools partx-utils e2fsprogs mkf2fs kmod-gpio-button-hotplug \
-		    automount autocore-arm autosamba fdisk cfdisk e2fsprogs ethtool haveged htop \
-		    luci-app-zerotier luci-app-ipsec-vpnd
+		    automount autocore-arm autosamba fdisk cfdisk e2fsprogs ethtool haveged htop 
+		    #luci-app-zerotier luci-app-ipsec-vpnd
 
 KERNELNAME:=Image dtbs
 
