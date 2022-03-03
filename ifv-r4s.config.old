@@ -7521,7 +7521,7 @@ CONFIG_PACKAGE_coreutils-false=y
 # CONFIG_PACKAGE_coreutils-fmt is not set
 # CONFIG_PACKAGE_coreutils-fold is not set
 # CONFIG_PACKAGE_coreutils-groups is not set
-CONFIG_PACKAGE_coreutils-head=y
+# CONFIG_PACKAGE_coreutils-head is not set
 # CONFIG_PACKAGE_coreutils-hostid is not set
 # CONFIG_PACKAGE_coreutils-id is not set
 # CONFIG_PACKAGE_coreutils-install is not set
