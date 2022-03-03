@@ -15,7 +15,7 @@ fi
 
 function Read_Target_Path ()
 {
-echo -e "Enter your target dir name or path.(Leave blank if you want)"
+echo -e "Enter your target dir name or path.(Leave blank if the script is just in it)"
 read TARGET_PATH
 #Check path,replace to $PWD if empty
 if [ $TARGET_PATH = ]
