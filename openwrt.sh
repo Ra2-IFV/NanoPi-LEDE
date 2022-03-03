@@ -83,6 +83,7 @@ fi
 Read_LEDE_Path
 rm $LEDE_PATH/bin/* -rf
 rm $LEDE_PATH/tmp -rf
+rm $LEDE_PATH/*.old
 echo -e "Done."
 ;;
 
