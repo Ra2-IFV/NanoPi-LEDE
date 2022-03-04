@@ -2,5 +2,7 @@ package/base-files/files/etc/sysctl.d/10-default.conf
 package/base-files/files/etc/banner
 package/base-files/files/etc/shells
 package/base-files/files/etc/passwd
+package/system/opkg/files/customfeeds.conf
 feeds/luci/collections/luci/Makefile
-
+feeds.conf.default
+target/linux/rockchip/Makefile

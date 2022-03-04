@@ -19,6 +19,8 @@ make defconfig
 更新一遍feeds，并检查编译依赖  
 `make download -j$(($(nproc)+1))`提前下载安装包  
 `make -j$(($(nproc)+1)) V=s`开始编译  
+`make menuconfig`开始自定义编译
+`make defconfig`生成默认配置文件/检查现有配置文件
 ## 编译报错排障指南
 这方面我绝对有发言权，因为我把能踩的坑几乎都踩了一遍......  
 Waiting for update...

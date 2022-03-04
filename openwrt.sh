@@ -28,7 +28,6 @@ fi
 
 clear
 echo -e "LEDE Multifunctional Script v1.0.0"
-sleep 2s
 echo -e "Enter a number."
 echo -e "1. Clone LEDE(From Lean)"
 echo -e "2. Clone LEDE(From Ra2-IFV)"
@@ -76,7 +75,7 @@ echo -e "Done."
 #Remove temporary file for rebuild
 echo -e "This option will remove all files under YOUR_LEDE_DIR/bin .Continue? (y/n)"
 read OPTION_EXIT
-if [ $OPTION_EXIT != 'y' ]
+if [ $OPTION_EXIT != "y" ]
 then
 exit 0;
 fi
